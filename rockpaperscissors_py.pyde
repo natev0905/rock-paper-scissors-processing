@@ -1,6 +1,6 @@
 import random
 player_one_selection = 0
-player_two_selection = 0
+player_two_selection = 1
 player_one_picked = None
 player_one_score = 0
 player_two_score = 0
@@ -23,6 +23,7 @@ def draw():
     
     background(255)
     game_screen()
+    player_two_selection()
     player_one_win_screen()
     player_two_win_screen()
 
@@ -79,6 +80,61 @@ def player_two_win_screen():
         fill(0)
         text("RETURN", 200, 1045)
         
+def player_two_selection():
+    global player_two_selection
+    global player_one_picked
+    
+    if player_two_selection == 1:
+        image_one = loadImage("rock.png")
+        image(image_one, 700, 300)
+    
+    elif player_two_selection == 2:
+        image_two = loadImage("paper.png")
+        image(image_two, 700, 300)
+        
+    elif player_two_selection == 3:
+        image_three = loadImage("scissors.png")
+        image(image_three, 700, 300)
+        
+def winner():
+    global player_one_score
+    global player_two_score
+    global player_two_selection
+    global player_one_picked
+    global mode
+    
+    
+    if player_one_selection == 1 and player_two_selection == 2:
+        player_two_score += 1
+        player_one_picked = False
+    
+    if player_one_selection == 3 and player_two_selection == 3:
+        player_two_score += 1
+        player_one_picked = False
+    
+    if player_one_selection == 3 and player_two_selection == 1:
+        player_two_score += 1
+        player_one_picked = False
+        
+    
+    if player_one_selection == 2 and player_two_selection == 1:
+        player_one_score += 1
+        player_one_picked = False
+    
+    if player_one_selection == 3 and player_two_selection == 2:
+        player_one_score += 1
+        player_one_picked = False
+    
+    if player_one_selection == 1 and player_two_selection == 3:
+        player_one_score += 1
+        player_one_picked = False
+        
+    
+    if player_one_score >= 3:
+        mode = 1
+    if player_two_score >= 3:
+        mode = 2
+        
         
         
 #restart function to set score and tracking variables to 0
@@ -97,3 +153,7 @@ def restart():
 
 def mousePressed():
     print(mouseX, mouseY)
+
+
+    
+   
