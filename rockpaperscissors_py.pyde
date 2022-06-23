@@ -16,3 +16,16 @@ def setup():
     
     size(1200, 1200)
     
+def draw():
+    global player_one_selection
+    global player_one_picked
+    global mode
+    
+    background(255)
+    
+
+def game_screen():
+    if mode == 0:
+        fill(255)
+        strokeWeight(5)
+        rect(100, 100, 100, 110)
