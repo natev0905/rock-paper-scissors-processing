@@ -1,6 +1,6 @@
 import random
 player_one_selection = 0
-player_two_selection = 1
+player_two_selection = 0
 player_one_picked = None
 player_one_score = 0
 player_two_score = 0
@@ -23,7 +23,9 @@ def draw():
     
     background(255)
     game_screen()
-    player_two_selection()
+    player_1_score()
+    player_2_score()
+    player_2_selection()
     player_one_win_screen()
     player_two_win_screen()
 
@@ -80,7 +82,7 @@ def player_two_win_screen():
         fill(0)
         text("RETURN", 200, 1045)
         
-def player_two_selection():
+def player_2_selection():
     global player_two_selection
     global player_one_picked
     
@@ -134,6 +136,16 @@ def winner():
         mode = 1
     if player_two_score >= 3:
         mode = 2
+
+def player_1_score():
+    fill(0)
+    textSize(70)
+    text(player_one_score, 130, 380)    
+
+def player_2_score():
+    fill(0)
+    textSize(70)
+    text(player_two_score, 1030, 380)
         
         
         
@@ -149,7 +161,7 @@ def restart():
     player_one_score = 0
     player_two_score = 0
     
-        
+ 
 
 def mousePressed():
     print(mouseX, mouseY)
