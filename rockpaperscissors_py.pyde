@@ -28,6 +28,19 @@ def draw():
     player_2_selection()
     player_one_win_screen()
     player_two_win_screen()
+    
+    if player_one_selection == 1:
+        image_one = loadImage("rock.png")
+        image(image_one, 300, 300)
+        
+    elif player_one_selection == 2:
+        image_two = loadImage("paper.png")
+        image(image_two, 300, 300)
+    
+    elif player_one_selection == 3:
+        image_three = loadImage("scissors.png")
+        image(image_three, 300, 300)
+        
 
 def game_screen():
     if mode == 0:
@@ -165,6 +178,32 @@ def restart():
 
 def mousePressed():
     print(mouseX, mouseY)
+    global player_one_selection, player_two_selection, mode
+    
+    if mouseX > 130 and mouseY > 730 and mouseX < 330 and mouseY < 926:
+        player_one_selection = 1
+        player_two_selection = random.randint(1,3)
+        winner()
+    
+    if mouseX > 447 and mouseY > 729 and mouseX < 647 and mouseY < 929:
+        player_one_selection = 2
+        player_two_selection = random.randint(1,3)
+        winner()
+    
+    if mouseX > 753 and mouseY > 728 and mouseX < 952 and mouseY < 929:
+        player_one_selection = 3
+        player_two_selection = random.randint(1,3)
+        winner()
+        
+        
+    if mouseX > 103 and mouseY > 999 and mouseX < 502 and mouseY < 1051 and (mode == 1 or mode ==2):
+        mode = 0
+    
+
+    
+    
+        
+    
 
 
     
