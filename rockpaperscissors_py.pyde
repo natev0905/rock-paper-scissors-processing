@@ -1,4 +1,6 @@
 import random
+
+#set variables
 player_one_selection = 0
 player_two_selection = 0
 player_one_picked = None
@@ -6,6 +8,7 @@ player_one_score = 0
 player_two_score = 0
 mode = 0
 
+#create screen
 def setup():
     global player_one_selection
     global player_two_selection
@@ -15,7 +18,8 @@ def setup():
     global mode
     
     size(1200, 1200)
-    
+
+    #main function to run program    
 def draw():
     global player_one_selection
     global player_one_picked
@@ -41,7 +45,7 @@ def draw():
         image_three = loadImage("scissors.png")
         image(image_three, 300, 300)
         
-
+#sets up game screen and score boxes
 def game_screen():
     if mode == 0:
         fill(255)
@@ -68,7 +72,8 @@ def game_screen():
         image(image_two, 450, 730)
         image_three = loadImage("scissors.png")
         image(image_three, 750, 730)
-        
+
+#displays if player 1 wins        
 def player_one_win_screen():
     if mode == 1:
         restart()
@@ -81,7 +86,9 @@ def player_one_win_screen():
         rect(100, 1000, 400, 50)
         fill(0)
         text("RETURN", 200, 1045)
+
         
+# displays if computer wins        
 def player_two_win_screen():
     if mode == 2:
         restart()
@@ -94,7 +101,9 @@ def player_two_win_screen():
         rect(100, 1000, 400, 50)
         fill(0)
         text("RETURN", 200, 1045)
+
         
+#function for the computer selection and where to display its selection        
 def player_2_selection():
     global player_two_selection
     global player_one_picked
@@ -110,7 +119,9 @@ def player_2_selection():
     elif player_two_selection == 3:
         image_three = loadImage("scissors.png")
         image(image_three, 700, 300)
+
         
+#function to determine winner        
 def winner():
     global player_one_score
     global player_two_score
@@ -144,17 +155,19 @@ def winner():
         player_one_score += 1
         player_one_picked = False
         
-    
+    #marks game is over and switches to win screen
     if player_one_score >= 3:
         mode = 1
     if player_two_score >= 3:
         mode = 2
 
+#function to keep player one score updated after each round
 def player_1_score():
     fill(0)
     textSize(70)
     text(player_one_score, 130, 380)    
 
+#function to keep computer score updated after each round
 def player_2_score():
     fill(0)
     textSize(70)
@@ -175,7 +188,7 @@ def restart():
     player_two_score = 0
     
  
-
+#all of the components that involve clicking are setup here - images, selections, return from win screen to restart
 def mousePressed():
     print(mouseX, mouseY)
     global player_one_selection, player_two_selection, mode
